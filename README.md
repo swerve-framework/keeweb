@@ -1,3 +1,16 @@
+# This is a demo of [swerve-go](https://github.com/swerve-framework/swerve-go)
+
+Building and running:
+
+```
+npm run start
+go run .
+```
+
+Original readme below.
+
+---
+
 # Free cross-platform password manager compatible with KeePass
 
 This webapp is a browser and desktop password manager compatible with KeePass databases. It doesn't require any server or additional resources.

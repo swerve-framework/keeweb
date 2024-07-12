@@ -21,9 +21,6 @@ if (Features.isMac) {
 }
 
 const logger = new Logger('browser-extension-connector');
-if (!localStorage.debugBrowserExtension) {
-    logger.level = Logger.Level.Info;
-}
 
 const connections = new Map();
 const pendingBrowserMessages = [];

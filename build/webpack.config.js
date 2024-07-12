@@ -68,14 +68,15 @@ function config(options) {
             fallback: {
                 console: false,
                 process: false,
-                crypto: false,
+                crypto: require.resolve('crypto-browserify'),
                 Buffer: false,
                 __filename: false,
                 __dirname: false,
                 fs: false,
                 setImmediate: false,
                 path: false,
-                moment: false
+                moment: false,
+                stream: require.resolve('stream-browserify')
             }
         },
         resolveLoader: {
@@ -229,8 +230,8 @@ function config(options) {
             __dirname: false
         },
         externals: {
+            swerve: 'swerve',
             xmldom: 'null',
-            crypto: 'null',
             fs: 'null',
             path: 'null'
         },

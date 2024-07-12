@@ -14,7 +14,7 @@ import { Links } from 'const/links';
 import { SelectEntryView } from 'views/select/select-entry-view';
 
 const logger = new Logger('auto-type');
-const clearTextAutoTypeLog = !!localStorage.debugAutoType;
+const clearTextAutoTypeLog = false;
 
 const AutoType = {
     enabled: !!(Launcher && Launcher.autoTypeSupported),

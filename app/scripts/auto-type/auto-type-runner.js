@@ -3,11 +3,7 @@ import { AutoTypeObfuscator } from 'auto-type/auto-type-obfuscator';
 import { StringFormat } from 'util/formatting/string-format';
 import { Logger } from 'util/logger';
 
-const emitterLogger = new Logger(
-    'auto-type-emitter',
-    undefined,
-    localStorage.debugAutoType ? Logger.Level.All : Logger.Level.Info
-);
+const emitterLogger = new Logger('auto-type-emitter', undefined, Logger.Level.Info);
 
 const AutoTypeRunner = function (ops) {
     this.ops = ops;

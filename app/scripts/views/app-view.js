@@ -26,6 +26,7 @@ import { SettingsView } from 'views/settings/settings-view';
 import { TagView } from 'views/tag-view';
 import { ImportCsvView } from 'views/import-csv-view';
 import { TitlebarView } from 'views/titlebar-view';
+import { FingerprintView } from 'views/fingerprint-view';
 import template from 'templates/app.hbs';
 
 class AppView extends View {
@@ -61,6 +62,7 @@ class AppView extends View {
         if (this.titlebarStyle !== 'default' && Features.renderCustomTitleBar) {
             this.views.titlebar = new TitlebarView(this.model);
         }
+        this.views.fingerprint = new FingerprintView(this.model);
 
         this.views.menu.listenDrag(this.views.menuDrag);
         this.views.list.listenDrag(this.views.listDrag);
@@ -150,6 +152,7 @@ class AppView extends View {
         this.views.listDrag.render();
         this.views.details.render();
         this.views.titlebar?.render();
+        this.views.fingerprint.render();
         this.showLastOpenFile();
     }
 

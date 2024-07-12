@@ -3,7 +3,6 @@ import EventEmitter from 'events';
 import { Tip } from 'util/ui/tip';
 import { KeyHandler } from 'comp/browser/key-handler';
 import { FocusManager } from 'comp/app/focus-manager';
-import { Logger } from 'util/logger';
 
 const DoesNotBubble = {
     mouseenter: true,
@@ -29,7 +28,7 @@ class View extends EventEmitter {
     modal = undefined;
     eventListeners = {};
     elementEventListeners = [];
-    debugLogger = localStorage.debugView ? new Logger('view', this.constructor.name) : undefined;
+    debugLogger = undefined;
 
     constructor(model = undefined, options = {}) {
         super();

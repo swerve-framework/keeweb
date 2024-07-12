@@ -46,7 +46,10 @@ module.exports = function (grunt) {
                     grunt.warn(`Not found: ${type}-src`);
                 }
                 const digestsList = digests.map((digest) => `'${algo}-${digest}'`).join(' ');
-                htmlStr = htmlStr.replace(`${type}-src 'self'`, `${type}-src ${digestsList}`);
+                htmlStr = htmlStr.replace(
+                    `${type}-src 'self'`,
+                    `${type}-src 'self' ${digestsList}`
+                );
             }
 
             grunt.log.writeln(

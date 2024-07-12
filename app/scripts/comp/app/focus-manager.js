@@ -1,10 +1,6 @@
 import { Logger } from 'util/logger';
 
-const logger = new Logger(
-    'focus-manager',
-    undefined,
-    localStorage.debugFocusManager ? Logger.Level.Debug : Logger.Level.Info
-);
+const logger = new Logger('focus-manager', undefined, Logger.Level.Info);
 
 const FocusManager = {
     modal: null,

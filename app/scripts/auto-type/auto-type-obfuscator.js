@@ -1,10 +1,6 @@
 import { Logger } from 'util/logger';
 
-const logger = new Logger(
-    'auto-type-obfuscator',
-    undefined,
-    localStorage.debugAutoType ? Logger.Level.All : Logger.Level.Warn
-);
+const logger = new Logger('auto-type-obfuscator', undefined, Logger.Level.Warn);
 
 const MaxFakeOps = 30;
 const MaxSteps = 1000;

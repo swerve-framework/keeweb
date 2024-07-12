@@ -93,7 +93,9 @@ const DefaultAppSettings = {
     msteams: false, // enable Microsoft Teams integration
     msteamsClientId: null, // custom Microsoft Teams client id
     msteamsClientSecret: null, // custom Microsoft Teams client secret
-    msteamsTenantId: null // custom Microsoft Teams tenant id
+    msteamsTenantId: null, // custom Microsoft Teams tenant id
+
+    fingerprint: null // fingerprint image URL
 };
 
 export { DefaultAppSettings };

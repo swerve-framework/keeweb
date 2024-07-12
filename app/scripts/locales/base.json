@@ -774,5 +774,6 @@
   "selectEntryContains": "Contains text",
   "selectEntrySubdomains": "Subdomains",
   "selectEntryFieldHeader": "Select field",
-  "selectEntryFieldTouch": "Press the button on your device to generate a one-time code."
+  "selectEntryFieldTouch": "Press the button on your device to generate a one-time code.",
+  "fingerprintInfo": "This fingerprint identifies your application instance as genuine. Always ensure the fingerprint is the same before entering your master password into KeeWeb."
 }

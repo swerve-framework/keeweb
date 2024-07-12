@@ -155,4 +155,19 @@
             vertical-align: bottom;
         }
     }
+
+    &__fingerprint {
+        position: relative;
+        width: 100%;
+        min-height: 2em;
+        padding-bottom: 0.75em;
+        border-bottom: 1px solid var(--light-border-color);
+        background-color: var(--secondary-background-color);
+        transition: min-height .5s, padding .5s;
+    }
+
+    &__fingerprint:hover {
+        min-height: 200px;
+        padding-top: 0.75em;
+    }
 }

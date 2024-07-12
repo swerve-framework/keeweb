@@ -32,6 +32,8 @@ const SingleInstanceChecker = {
 
     setKey(key, value) {
         try {
+            // swerve.encrypt not required here; the keys are constants and
+            // values are non-sensitive timestamps
             localStorage.setItem(key, value);
             setTimeout(() => {
                 localStorage.removeItem(key);

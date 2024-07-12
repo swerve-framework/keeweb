@@ -41,7 +41,7 @@ const Updater = {
     init() {
         this.scheduleNextCheck();
         if (!Launcher && navigator.serviceWorker && !RuntimeInfo.beta && !RuntimeInfo.devMode) {
-            navigator.serviceWorker
+            /* navigator.serviceWorker
                 .register('service-worker.js')
                 .then((reg) => {
                     logger.info('Service worker registered');
@@ -54,7 +54,7 @@ const Updater = {
                 })
                 .catch((e) => {
                     logger.error('Failed to register a service worker', e);
-                });
+                }); */
         }
     },
 

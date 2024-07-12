@@ -29,6 +29,8 @@ import { AppView } from 'views/app-view';
 import 'hbs-helpers';
 import { AutoType } from './auto-type';
 import { Storage } from './storage';
+import { CryptoEngine } from 'kdbxweb';
+import { LifeHash, LifeHashVersion } from 'lifehash';
 
 StartProfiler.milestone('loading modules');
 
@@ -102,7 +104,7 @@ ready(() => {
         });
     }
 
-    function showSettingsLoadError() {
+    /* function showSettingsLoadError() {
         Alerts.error({
             header: Locale.appSettingsError,
             body: Locale.appSettingsErrorBody,
@@ -111,13 +113,13 @@ ready(() => {
             enter: false,
             click: false
         });
-    }
+    } */
 
     function loadRemoteConfig() {
         return Promise.resolve()
             .then(() => {
                 SettingsManager.setBySettings();
-                const configParam = getConfigParam();
+                /* const configParam = getConfigParam();
                 if (configParam) {
                     return appModel
                         .loadConfig(configParam)
@@ -130,7 +132,7 @@ ready(() => {
                                 throw e;
                             }
                         });
-                }
+                } */
             })
             .then(() => {
                 StartProfiler.milestone('loading remote config');
@@ -151,8 +153,7 @@ ready(() => {
 
     function showApp() {
         return Promise.resolve().then(() => {
-            const skipHttpsWarning =
-                localStorage.skipHttpsWarning || appModel.settings.skipHttpsWarning;
+            const skipHttpsWarning = appModel.settings.skipHttpsWarning;
             const protocolIsInsecure = ['https:', 'file:', 'app:'].indexOf(location.protocol) < 0;
             const hostIsInsecure = location.hostname !== 'localhost';
             if (protocolIsInsecure && hostIsInsecure && !skipHttpsWarning) {
@@ -178,7 +179,19 @@ ready(() => {
         });
     }
 
+    function generateFingerprint() {
+        const bytes = CryptoEngine.random(32);
+        const image = LifeHash.makeFrom(bytes, LifeHashVersion.version2, 1, true);
+        const fingerprint = image.toDataUrl();
+        appModel.settings.set({ fingerprint });
+    }
+
     function postInit() {
+        Events.on('generate-fingerprint', generateFingerprint);
+        if (appModel.settings.fingerprint === null) {
+            Events.emit('generate-fingerprint');
+        }
+
         setTimeout(() => {
             Updater.init();
             SingleInstanceChecker.init();
@@ -199,7 +212,7 @@ ready(() => {
         StartProfiler.report();
     }
 
-    function getConfigParam() {
+    /* function getConfigParam() {
         const metaConfig = document.head.querySelector('meta[name=kw-config]');
         if (metaConfig && metaConfig.content && metaConfig.content[0] !== '(') {
             return metaConfig.content;
@@ -208,5 +221,5 @@ ready(() => {
         if (match && match[1]) {
             return match[1];
         }
-    }
+    } */
 });
